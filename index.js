@@ -352,34 +352,26 @@ app.post("/login", async (req, res) => {
 //     streak: user.streak   
 //   });
 // });
-app.get("/checklogin", (req, res) => {
-
-  console.log("CHECKLOGIN HIT");
-
+app.get("/checklogin", async (req, res) => {
   const token = req.cookies.token;
-
-  console.log("TOKEN:", token);
 
   if (!token) {
     return res.json({ loggedIn: false });
   }
 
   try {
-
     const data = jwt.verify(token, "secretkey123");
 
-    console.log("DECODED:", data);
+    const user = await userModel.findById(data.id);
 
     return res.json({
       loggedIn: true,
-      username: data.name,
-      id: data.id
+      username: user.Name,
+      streak: user.streak || 0
     });
 
   } catch (err) {
-
     return res.json({ loggedIn: false });
-
   }
 });
 
