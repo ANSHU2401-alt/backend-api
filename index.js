@@ -184,8 +184,6 @@ app.post("/login", async (req, res) => {
     streak: user.streak   
   });
 });
-const express=require('express');
-const app=express();
 const cors = require("cors");
 app.use(cors({
   origin: [
