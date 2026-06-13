@@ -49,18 +49,18 @@ app.post("/Contact", async (req, res) => {
 
   if (!user) {
     return res.render(
-      "notcontactuser.ejs"
+      "notcontactuser"
     );
   }
 
   await userModel_contact.create({
-    Name: req.body.Name,
-    Email: req.body.Email,
-    Username: req.body.Username,
-    Comment: req.body.Comment
-  });
+  Name: req.body.Name,
+  Email: req.body.Email,
+  Username: req.body.Username,
+  Comment: req.body.comment || req.body.Comment
+});
 
-  res.render("query_donw.ejs")
+  res.render("query_donw")
 });
 
 app.post("/create",async (req,res)=>{
@@ -70,7 +70,7 @@ if (
     year < 1900 ||
     year > new Date().getFullYear()
 ) {
-    return res.render("dobwrong.ejs");
+    return res.render("dobwrong");
 }
     else{
         if(req.body.Password!=req.body.ConfirmPassword){
@@ -82,7 +82,24 @@ if (
     let user_Email = await userModel.findOne(
         { Email: req.body.Email },
     );
+    let user_name = await userModel.findOne(
+        { Name: req.body.Name },
+    );
     if (user_Email) {
+        res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-black text-white flex items-center justify-center h-screen space-x-2">
+      <h1 class="text-4xl md:text-3xl font-bold">Person already exists </h1>
+      <div class="bg-emerald-400 hover:bg-emerald-500 px-2 py-2 rounded-md"><a href="http://localhost:5173/login" class="text-3xl md:text-xl">Go back</a></div>
+    </body>
+    </html>
+  `);
+}
+    else if (user_name) {
         res.send(`
     <!DOCTYPE html>
     <html>
@@ -103,7 +120,7 @@ if (
     Password: hash,
     DOB:req.body.DOB
     })
-        res.render('signed_successfull.ejs')
+        res.render('signed_successfull')
     }
 }
     }
@@ -195,9 +212,10 @@ app.get("/checklogin", (req, res) => {
   }
 });
 
-app.post("/feedback",async (req,res)=>{
-  let v=await userModel.create({
-    Feedback:req.body.Feedback
-    })
-    res.render('feedback.ejs')
-})
+app.post("/feedback", async (req, res) => {
+  await userModel_feedback.create({
+    Feedback: req.body.Feedback
+  });
+
+  res.render('feedback')
+});
