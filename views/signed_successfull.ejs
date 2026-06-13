@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <style>
+    .fancy-toast {
+      font-size: 15px;
+      border-radius: 12px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      background: linear-gradient(90deg, #2b5496,blue);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toastify .toast-close {
+  color: black !important;
+  opacity: 1 !important;
+  font-weight: bold;
+}
+  </style>
+</head>
+
+<body class="bg-black md:bg-emerald-950 text-white flex space-x-1 w-[100vw] overflow-hidden h-screen ">
+<!-- <img src="welcome.png" alt="None" class="absolute -z-10 w-full"> -->
+<div class="div w-[100%] h-[100%] flex justify-center items-center pt-5">
+  <div class="div w-[100%] md:w-[70%] text-white h-full relative opacity-85 h-[100%] rounded-2xl">
+    <img src="flower.avif" alt="None" class="absolute -z-10 w-full h-full rounded-2xl">
+    <div class="div flex w-full h-full">
+      <div class="p-3 div text-xl font-semibold w-[100%] md:w-[55%]   h-[100%] flex justify-center items-center md:space-x-2 space-x-1 rounded-2xl">
+      <h1 class="text-2xl md:text-3xl">Welcome to IITian - Bros</h1>
+    <a href="http://localhost:5173/login" class="bg-emerald-400 md:px-2 md:py-2 px-3 py-3 rounded-md">Login</a>
+      </div>
+    <div class="p-3 div font-semibold hidden  w-[55%] opacity-90 h-[100%] md:flex justify-center items-center">
+      <div class="div md:text-xl">“Welcome to IITian Bros. Our mission is to guide JEE aspirants in building strong mathematical foundations, improving problem-solving skills, and gaining the confidence needed to excel in JEE and other competitive examinations.”
+    <br><br>
+    We believe that with the right guidance, consistency, and smart effort, every student can achieve their dream rank.
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+  Toastify({
+    text: "Signup successful! Welcome aboard",
+    duration: 4000,
+    gravity: "top",
+    position: "right",
+    close: true,
+    stopOnFocus: true,
+    className: "fancy-toast",
+    offset: {
+      x: 20,
+      y: 20
+    }
+  }).showToast();
+</script>
+
+</body>
+</html>
