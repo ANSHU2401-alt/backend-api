@@ -172,11 +172,13 @@ app.post("/login", async (req, res) => {
     { expiresIn: "1d" }
   );
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000,
-    path: "/"
-  });
+ res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,       
+  sameSite: "none",    
+  maxAge: 24 * 60 * 60 * 1000,
+  path: "/"
+});
 
   return res.json({
     success: true,
@@ -383,10 +385,4 @@ app.post("/feedback", async (req, res) => {
   res.render('feedback')
 });
 
-app.post("/feedback", async (req, res) => {
-  await userModel_feedback.create({
-    Feedback: req.body.Feedback
-  });
-
-  res.render('feedback')
 });
