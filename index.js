@@ -184,7 +184,6 @@ app.post("/login", async (req, res) => {
     streak: user.streak   
   });
 });
-const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const port = process.env.PORT || 3000
 app.listen(port, () => {
