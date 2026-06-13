@@ -184,16 +184,6 @@ app.post("/login", async (req, res) => {
     streak: user.streak   
   });
 });
-const cors = require("cors");
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://iitiansbro-seven.vercel.app"
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"]
-}));
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const port = process.env.PORT || 3000
