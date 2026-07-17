@@ -89,7 +89,7 @@ app.post("/create", async (req, res) => {
     </head>
     <body class="bg-black text-white flex items-center justify-center h-screen space-x-2">
       <h1 class="text-4xl md:text-3xl font-bold">Person already exists </h1>
-      <div class="bg-emerald-400 hover:bg-emerald-500 px-2 py-2 rounded-md"><a href="https://backend-api-p3b2.onrender.com/login" class="text-3xl md:text-xl">Go back</a></div>
+      <div class="bg-emerald-400 hover:bg-emerald-500 px-2 py-2 rounded-md"><a href="https://iitiansbro-seven.vercel.app/SignUp" class="text-3xl md:text-xl">Go back</a></div>
     </body>
     </html>
   `);
