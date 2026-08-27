@@ -200,7 +200,19 @@ app.get("/checklogin", async (req, res) => {
     return res.json({ loggedIn: false });
   }
 });
+app.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/"
+  });
 
+  return res.json({
+    success: true,
+    message: "Logged out successfully"
+  });
+});
 app.post("/feedback", async (req, res) => {
   await userModel_feedback.create({
     Feedback: req.body.Feedback
